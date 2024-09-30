@@ -44,7 +44,16 @@ public class EventManager : MonoBehaviour
         {
             ResetEvent(oneEventIndex);
         }
+        HandleDamage();
         HandleRandomEvent();
+    }
+
+    private void HandleDamage()
+    {
+        if (!isHappening)
+            StopDamage();
+        else
+            Damage();
     }
 
     private void HandleRandomEvent()
@@ -52,12 +61,7 @@ public class EventManager : MonoBehaviour
         if (!start) return;
         if (!isHappening)
         {
-            StopDamage();
             HandleEvent();
-        }
-        else
-        {
-            Damage();
         }
 
         if (eventObjectManager.IsBanish(randomIndex))
@@ -76,6 +80,7 @@ public class EventManager : MonoBehaviour
         {
             eventObjectManager.Activate(i);
             oneEventIndex = i;
+            isHappening = true;
         }
     }
 
@@ -105,6 +110,7 @@ public class EventManager : MonoBehaviour
     }
     private void ResetEvent(int i)
     {
+        isHappening = false;
         eventObjectManager.Deactivate(i);
     }
 

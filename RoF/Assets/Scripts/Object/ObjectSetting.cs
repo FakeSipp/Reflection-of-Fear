@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class ObjectSetting : MonoBehaviour
 {
-    [HideInInspector] public ObjectClass obj;
+    public ObjectClass obj;
     [HideInInspector] public LightSwitch lightSwitch;
-    [HideInInspector] public DoorObject door;
-    public RealObject realObject;
+    [HideInInspector] public DoorObject doorObject;
+    [HideInInspector] public RealObject realObject;
 
-    private void Start()
+    private void Awake()
     {
         if (obj == null) return;
 
@@ -32,11 +32,11 @@ public class ObjectSetting : MonoBehaviour
 
     private void Door()
     {
-        door = obj as DoorObject;
-        Door doorControl = transform.GetComponent<Door>();
-        if (doorControl != null)
+        doorObject = obj as DoorObject;
+        Door thisDoor = GetComponent<Door>();
+        if (thisDoor != null)
         {
-            door.door = doorControl;
+            doorObject.door = thisDoor;
         }
         else
         {
