@@ -6,7 +6,7 @@ public class EventManager : MonoBehaviour
 {
     [Header("Objects")]
     [SerializeField] private EventObjectManager eventObjectManager;
-    [SerializeField] private PowerCut light;
+    [SerializeField] private PowerCut lightCutScript;
 
     [Header("Event Parameters")]
     [SerializeField] private bool start;
@@ -16,6 +16,9 @@ public class EventManager : MonoBehaviour
     [SerializeField] private float cdTime;
     [SerializeField] private bool onCooldown;
     [SerializeField] private bool isHappening;
+
+    [Header("Event Sound")]
+    [SerializeField] private EventSoundManager eventSound;
 
     [Header("Power Cut Parameters")]
     [SerializeField] private float powerCutCheckInterval = 5f;
@@ -31,8 +34,10 @@ public class EventManager : MonoBehaviour
     {
         input = FindAnyObjectByType<InputManager>();
         eventObjectManager = FindAnyObjectByType<EventObjectManager>();
-        light = FindAnyObjectByType<PowerCut>();
+        lightCutScript = FindAnyObjectByType<PowerCut>();
         sanity = FindAnyObjectByType<Sanity>();
+        
+        eventSound = GameObject.Find("EventSound").GetComponent<EventSoundManager>();
 
         cdTime = Random.Range(15, 30);
         powerCutCooldown = powerCutCheckInterval;
@@ -51,9 +56,24 @@ public class EventManager : MonoBehaviour
     private void HandleDamage()
     {
         if (!isHappening)
+        {
             StopDamage();
+            StopEventSound();
+        }
         else
+        {
             Damage();
+            PlayEventSound();
+        }
+    }
+
+    private void PlayEventSound()
+    {
+        eventSound.PlaySound();
+    }
+    private void StopEventSound()
+    {
+        eventSound.StopSound();
     }
 
     private void HandleRandomEvent()
@@ -135,7 +155,7 @@ public class EventManager : MonoBehaviour
 
             if (Random.value <= powerCutChance)
             {
-                light.PowerOff();
+                lightCutScript.PowerOff();
             }
         }
     }

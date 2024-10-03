@@ -3,20 +3,41 @@ using UnityEngine;
 
 public class EventObjectManager : MonoBehaviour
 {
-    [System.Serializable] 
+    [System.Serializable]
     public class EventObject
     {
-        public HauntedObject hauntedObj; 
-        public ObjectSetting realObj;       
+        [Header("Haunted Object")]
+        public HauntedObject hauntedObj;
+
+        [Header("Real Object")]
+        public ObjectSetting realObj;
     }
 
+    [Header("Event Objects")]
     public List<EventObject> eventObjects = new List<EventObject>();
+
+    [Header("Audio")]
+    public AudioClip shakingSound;
+
+    [Header("Index & Count")]
     public int index;
     public int count;
 
     private void Start()
     {
         count = eventObjects.Count;
+
+        foreach(EventObject eventObj in eventObjects){
+            print("DO");
+            HauntedObject hauntedObj = eventObj.hauntedObj;
+            AudioSource audio = hauntedObj.GetComponent<AudioSource>();
+            if (!audio)
+                audio = hauntedObj.gameObject.AddComponent<AudioSource>();
+
+            audio.clip = shakingSound;
+            audio.loop = true;
+            audio.spatialBlend = 1;
+        }
     }
 
     public void Activate(int i)
@@ -25,6 +46,8 @@ public class EventObjectManager : MonoBehaviour
         {
             eventObjects[i].hauntedObj.Activate();
             index = i;
+
+            PlaySound(eventObjects[i].hauntedObj.GetComponent<AudioSource>());
         }
         else
         {
@@ -36,6 +59,7 @@ public class EventObjectManager : MonoBehaviour
         if (i >= 0 && i < eventObjects.Count)
         {
             eventObjects[i].hauntedObj.Deactivate();
+            StopSound(eventObjects[i].hauntedObj.GetComponent<AudioSource>());
         }
         else
         {
@@ -46,6 +70,8 @@ public class EventObjectManager : MonoBehaviour
     {
         eventObjects[index].hauntedObj.Deactivate();
         index = -1;
+
+        StopSound(eventObjects[index].hauntedObj.GetComponent<AudioSource>());
     }
     public bool IsBanish(int i)
     {
@@ -55,5 +81,14 @@ public class EventObjectManager : MonoBehaviour
     public bool IsBanish()
     {
         return eventObjects[index].realObj.realObject.isTouch;
+    }
+
+    public void PlaySound(AudioSource audio)
+    {
+        audio.Play();
+    }
+    public void StopSound(AudioSource audio)
+    {
+        audio.Stop();
     }
 }

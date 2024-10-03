@@ -327,6 +327,7 @@ GameObject:
   - component: {fileID: 5911445964278367631}
   - component: {fileID: 5727397099031772973}
   - component: {fileID: 4634631526746207688}
+  - component: {fileID: 7396447336551795885}
   m_Layer: 0
   m_Name: Switch
   m_TagString: Switch
@@ -342,9 +343,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4305757014540067400}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0974, y: -0.169, z: -62.26}
-  m_LocalScale: {x: 0.013264734, y: 0.06447924, z: 1.0234923}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 9.960457, y: 2.3532104, z: -8.99}
+  m_LocalScale: {x: 0.50101, y: 0.63975, z: 0.39014}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3244653464918018199}
@@ -421,5 +422,21 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7396447336551795885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4305757014540067400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57d15dc6dad0feb439046d9c0c621089, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obj: {fileID: 11400000, guid: da3748d681d1ee54ab96ee54a2759dd8, type: 2}
+  lightSwitch: {fileID: 0}
+  doorObject: {fileID: 0}
+  realObject: {fileID: 0}
