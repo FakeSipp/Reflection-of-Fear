@@ -5,20 +5,16 @@ public class PowerCut : MonoBehaviour
 {
     public List<Light> lightBulbs;
     public bool isPowerOn = true;
+    public AudioSource audio;
 
-    //private void Start()
-    //{
-    //    lightBulbs = new List<Light>();
-
-    //    foreach (Transform child in transform)
-    //    {
-    //        if (!child.GetComponent<Light>()) continue;
-    //        lightBulbs.Add(child.GetComponent<Light>());
-    //    }
-    //}
+    private void Start()
+    {
+        audio = GetComponent<AudioSource>();
+    }
 
     public void PowerOff()
     {
+        audio.Play();
         foreach (Light light in lightBulbs)
         {
             light.enabled = false;
@@ -27,6 +23,7 @@ public class PowerCut : MonoBehaviour
     }
     public void PowerOn()
     {
+        audio.Play();
         foreach (Light light in lightBulbs)
         {
             light.enabled = true;

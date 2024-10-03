@@ -407,6 +407,7 @@
 "Assets/Scripts/Core/CenterPoint.cs"
 "Assets/Scripts/Core/Sanity.cs"
 "Assets/Scripts/Error/ErrorHandling.cs"
+"Assets/Scripts/Event/DoorCloseTrigger.cs"
 "Assets/Scripts/Event/EventTrigger.cs"
 "Assets/Scripts/Event/HauntedObject.cs"
 "Assets/Scripts/Event/LightTrigger.cs"

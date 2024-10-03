@@ -28,17 +28,27 @@ public class Door : MonoBehaviour {
         if (locked) return;
         if (open)
         {
-            var target = Quaternion.Euler(0, DoorOpenAngle, 0);
-            transform.localRotation = Quaternion.Slerp(transform.localRotation, target, Time.deltaTime * 5 * smooth);
+            Open();
         }
         else
         {
-            var target1 = Quaternion.Euler(0, DoorCloseAngle, 0);
-            transform.localRotation = Quaternion.Slerp(transform.localRotation, target1, Time.deltaTime * 5 * smooth);
+            Close();
         }
 
         if (reflect == null) return;
         reflect.open = open;
+    }
+
+    public void Close()
+    {
+        var target1 = Quaternion.Euler(0, DoorCloseAngle, 0);
+        transform.localRotation = Quaternion.Slerp(transform.localRotation, target1, Time.deltaTime * 5 * smooth);
+    }
+
+    public void Open()
+    {
+        var target = Quaternion.Euler(0, DoorOpenAngle, 0);
+        transform.localRotation = Quaternion.Slerp(transform.localRotation, target, Time.deltaTime * 5 * smooth);
     }
 
     public void OpenDoorSound(){
