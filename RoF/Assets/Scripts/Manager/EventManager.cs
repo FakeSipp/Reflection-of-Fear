@@ -39,12 +39,13 @@ public class EventManager : MonoBehaviour
         
         eventSound = GameObject.Find("EventSound").GetComponent<EventSoundManager>();
 
-        cdTime = Random.Range(15, 30);
+        cdTime = Random.Range(40, 100);
         powerCutCooldown = powerCutCheckInterval;
     }
 
     private void Update()
     {
+
         if (eventObjectManager.IsBanish(oneEventIndex))
         {
             ResetEvent(oneEventIndex);
@@ -109,11 +110,11 @@ public class EventManager : MonoBehaviour
         isHappening = true;
 
         int range = eventObjectManager.count;
-        randomIndex = Random.Range(0, range);
+        randomIndex = Random.Range(1, range);
 
         bool canTriggerManyTime = eventObjectManager.eventObjects[randomIndex].hauntedObj.canTriggerManyTime;
         bool wasTriggered = eventObjectManager.eventObjects[randomIndex].hauntedObj.wasTriggered;
-        if (canTriggerManyTime && wasTriggered)
+        if (!canTriggerManyTime && wasTriggered)
         {
             RandomEvent();
         }
@@ -139,7 +140,7 @@ public class EventManager : MonoBehaviour
         if (cdTime <= 0)
         {
             RandomEvent();
-            cdTime = Random.Range(15, 30);
+            cdTime = Random.Range(40, 100);
         }
 
         cdTime -= Time.deltaTime;

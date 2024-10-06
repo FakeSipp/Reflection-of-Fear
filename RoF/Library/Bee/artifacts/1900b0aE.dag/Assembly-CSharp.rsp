@@ -419,6 +419,7 @@
 "Assets/Scripts/Manager/UIManager.cs"
 "Assets/Scripts/Object/ComputerPad.cs"
 "Assets/Scripts/Object/Keypad.cs"
+"Assets/Scripts/Object/MirrorPuzzle.cs"
 "Assets/Scripts/Object/ObjectSetting.cs"
 "Assets/Scripts/Object/Picture.cs"
 "Assets/Scripts/Object/PowerCut.cs"
