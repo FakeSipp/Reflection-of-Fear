@@ -3056,6 +3056,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1502818402513928, guid: d323fc18d7f7cbb4d971d8250d723165, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1451249481}
+    - targetCorrespondingSourceObject: {fileID: 1502818402513928, guid: d323fc18d7f7cbb4d971d8250d723165, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1451249484}
   m_SourcePrefab: {fileID: 100100000, guid: d323fc18d7f7cbb4d971d8250d723165, type: 3}
 --- !u!1001 &138073621
 PrefabInstance:
@@ -3526,6 +3529,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1511746606845076, guid: da4ad2310c6a3a44e8c6b74c731ffbc7, type: 3}
   m_PrefabInstance: {fileID: 578209862}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &153235517 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7396447336551795885, guid: c0529e255cbafe848a960082d5b1b827, type: 3}
+  m_PrefabInstance: {fileID: 1170506989}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57d15dc6dad0feb439046d9c0c621089, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &157622737
 GameObject:
   m_ObjectHideFlags: 0
@@ -13142,7 +13156,7 @@ GameObject:
   - component: {fileID: 843218067}
   - component: {fileID: 843218066}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: MirrorPuzzleBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20202,6 +20216,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4000014003336686, guid: ff9b1176aafb57843ac4773e5a331cde, type: 3}
   m_PrefabInstance: {fileID: 103974845}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1255471701 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1718356725150269448, guid: 83cc98429764a08448f34f44a503c723, type: 3}
+  m_PrefabInstance: {fileID: 1797479509757046256}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1257159294 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d8daf2d41b35ec04fa8a696cfad0beca, type: 3}
@@ -23431,6 +23456,27 @@ MonoBehaviour:
   doorObject: {fileID: 0}
   realObject: {fileID: 0}
   mirroPuzzleObject: {fileID: 0}
+--- !u!65 &1451249484
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451249478}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.5075196, y: 1.8860508, z: 1.2369258}
+  m_Center: {x: 0.000020891432, y: 0.4492082, z: 0.15597993}
 --- !u!1 &1453958958
 GameObject:
   m_ObjectHideFlags: 0
@@ -28250,6 +28296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca72232ed340762448ec6baab517381c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reflectionChar: {fileID: 2067945213}
   WorldDirection: {x: 0, y: 0, z: 0}
   currentSpeed: 0
   walkSpeed: 4
@@ -28258,6 +28305,7 @@ MonoBehaviour:
   lookDirection: {x: 0, y: 0, z: 0, w: 0}
   sensitivity: 0.2
   upDownRange: 90
+  anim: {fileID: 1693542209}
 --- !u!143 &1686487953
 CharacterController:
   m_ObjectHideFlags: 0
@@ -28548,6 +28596,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4494775606006702, guid: da4ad2310c6a3a44e8c6b74c731ffbc7, type: 3}
   m_PrefabInstance: {fileID: 412802759}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1693542209 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2733013695968003631, guid: a173a6d24df337844ba72da9cb43f651, type: 3}
+  m_PrefabInstance: {fileID: 1512705087}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1693865048
 PrefabInstance:
@@ -33362,6 +33415,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1905763300}
   - component: {fileID: 1905763299}
+  - component: {fileID: 1905763301}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -33388,12 +33442,6 @@ MonoBehaviour:
   keypadUI: {fileID: 0}
   eventWarning: {fileID: 0}
   videoPlayer: {fileID: 0}
-  playerTextData:
-  - key: Event Happening
-    value: I see something terrifying happening in the mirror. I need to do something
-      quickly.
-  - key: Power Cut
-    value: It's too dark. I have to turn on the light.
 --- !u!4 &1905763300
 Transform:
   m_ObjectHideFlags: 0
@@ -33409,6 +33457,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1905763301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905763298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 127798b2cac09794b8effbd42924afaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textUI: {fileID: 1255471701}
+  startGameText: Where am I?
+  hauntText: I see something moving in the mirror. I'm feeling bad.
+  openLightText: It's too dark. I see the switch next to the door.
+  mirrorPuzzleText: I got some rag. I think I can use it to clean something.
+  exitDoorOpenText: I am hearing something at that black door.
+  delayBeforeClear: 10
 --- !u!1001 &1908187760
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36308,6 +36375,7 @@ MonoBehaviour:
   eventSound: {fileID: 894751699}
   powerCutCheckInterval: 5
   powerCutChance: 0.005
+  light: {fileID: 153235517}
   input: {fileID: 0}
 --- !u!4 &2073709898
 Transform:
@@ -37244,6 +37312,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1718356725150269448, guid: 83cc98429764a08448f34f44a503c723, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1718356725150269448, guid: 83cc98429764a08448f34f44a503c723, type: 3}
       propertyPath: m_fontStyle
       value: 2
       objectReference: {fileID: 0}
@@ -37261,7 +37333,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6733532623654313763, guid: 83cc98429764a08448f34f44a503c723, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7110957563572385893, guid: 83cc98429764a08448f34f44a503c723, type: 3}
       propertyPath: m_AnchorMax.x

@@ -7,6 +7,12 @@ public class DoorCloseTrigger : MonoBehaviour
     public List<Door> doors;
     public bool isTrigger = false;
     public bool wasPlaySound = false;
+    private PlayerWordsManager wordManager;
+
+    private void Awake()
+    {
+        wordManager = FindAnyObjectByType<PlayerWordsManager>();
+    }
 
     private void Update()
     {
@@ -32,6 +38,7 @@ public class DoorCloseTrigger : MonoBehaviour
             {
                 isTrigger = true;
             }
+            wordManager.OpenLightText();
         }
     }
 }

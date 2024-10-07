@@ -6,9 +6,11 @@ public class LightSwitch : ObjectClass
 {
     [Header("Light Parameters")]
     [SerializeField] public PowerCut light;
+    public bool startGame = false;
 
     override public void Interacted(Transform transform)
     {
+        startGame = true;
         light.isPowerOn = !light.isPowerOn;
         if (light.isPowerOn)
         {

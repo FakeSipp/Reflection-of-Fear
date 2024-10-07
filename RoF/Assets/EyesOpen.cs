@@ -8,10 +8,13 @@ public class EyesOpen : MonoBehaviour
     public PostProcessVolume postProcessVolume;
     private Vignette vignette;
 
+    private PlayerWordsManager wordsManager;
+
     public float decreaseSpeed = 0.1f;
 
     private void Awake()
     {
+        wordsManager = FindAnyObjectByType<PlayerWordsManager>();
         postProcessVolume = GetComponent<PostProcessVolume>();
         postProcessVolume.enabled = true;
 
@@ -19,6 +22,8 @@ public class EyesOpen : MonoBehaviour
         {
             vignette.intensity.value = 0.5f;
         }
+
+        wordsManager.StartGameText();
     }
 
     private void Update()

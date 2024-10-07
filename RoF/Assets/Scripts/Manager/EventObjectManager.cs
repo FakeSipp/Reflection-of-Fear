@@ -75,7 +75,6 @@ public class EventObjectManager : MonoBehaviour
     }
     public bool IsBanish(int i)
     {
-        print(eventObjects[i].realObj.realObject.isTouch);
         return eventObjects[i].realObj.realObject.isTouch;
     }
     public bool IsBanish()

@@ -26,6 +26,9 @@ public class EventManager : MonoBehaviour
 
     [Header("Player Parameters")]
     private Sanity sanity;
+    private PlayerWordsManager wordManager;
+
+    public ObjectSetting light;
 
     public InputManager input;
     private float powerCutCooldown;
@@ -36,7 +39,8 @@ public class EventManager : MonoBehaviour
         eventObjectManager = FindAnyObjectByType<EventObjectManager>();
         lightCutScript = FindAnyObjectByType<PowerCut>();
         sanity = FindAnyObjectByType<Sanity>();
-        
+        wordManager = FindAnyObjectByType<PlayerWordsManager>();
+
         eventSound = GameObject.Find("EventSound").GetComponent<EventSoundManager>();
 
         cdTime = Random.Range(40, 100);
@@ -45,7 +49,7 @@ public class EventManager : MonoBehaviour
 
     private void Update()
     {
-
+        start = light.lightSwitch.startGame;
         if (eventObjectManager.IsBanish(oneEventIndex))
         {
             ResetEvent(oneEventIndex);
@@ -65,6 +69,7 @@ public class EventManager : MonoBehaviour
         {
             Damage();
             PlayEventSound();
+            wordManager.HauntText();
         }
     }
 

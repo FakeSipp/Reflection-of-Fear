@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text1: too bright
   text2: 5197
-  isClean: 1
+  isClean: 0
