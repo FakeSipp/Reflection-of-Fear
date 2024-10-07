@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ObjectSetting : MonoBehaviour
@@ -6,6 +7,7 @@ public class ObjectSetting : MonoBehaviour
     [HideInInspector] public LightSwitch lightSwitch;
     [HideInInspector] public DoorObject doorObject;
     [HideInInspector] public RealObject realObject;
+    [HideInInspector] public MirrorPuzzle mirroPuzzleObject;
 
     private void Awake()
     {
@@ -23,6 +25,15 @@ public class ObjectSetting : MonoBehaviour
         {
             Object();
         }
+        else if(obj is MirrorPuzzle) 
+        {
+            Mirror();
+        }
+    }
+
+    private void Mirror()
+    {
+        mirroPuzzleObject = obj as MirrorPuzzle;
     }
 
     private void Object()

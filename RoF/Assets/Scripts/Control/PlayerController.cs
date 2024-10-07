@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -7,7 +8,7 @@ public class PlayerController : MonoBehaviour
     private InputManager input;
 
     private CharacterController player;
-    private CharacterController reflectionChar;
+    public Transform reflectionChar;
 
     [Header("Movement Parameters")]
     [SerializeField] private Vector3 WorldDirection;
@@ -26,6 +27,9 @@ public class PlayerController : MonoBehaviour
     private float verticalRotation;
     public float sensitivity;
     public float upDownRange = 90;
+
+    [Header("Animation Parameters")]
+    public Animator anim;
 
     private Camera cam;
 
@@ -66,6 +70,12 @@ public class PlayerController : MonoBehaviour
         float horizontal = input.MoveInput.x;
         float vertical = input.MoveInput.y;
         Vector3 InputDirection = new Vector3(horizontal, velocity.y, vertical);
+
+        if (anim)
+        {
+            anim.SetFloat("Horizontal", horizontal/5);
+            anim.SetFloat("Vertical", vertical);
+        }
          
         WorldDirection = transform.TransformDirection(InputDirection);
         WorldDirection.Normalize();
@@ -78,6 +88,7 @@ public class PlayerController : MonoBehaviour
 
         float mouseXRotation = input.LookInput.x * sensitivity;
         transform.Rotate(0, mouseXRotation, 0);
+        reflectionChar.Rotate(0, -mouseXRotation, 0);
 
         verticalRotation -= input.LookInput.y * sensitivity;
         verticalRotation = Mathf.Clamp(verticalRotation, -upDownRange, upDownRange);
