@@ -9,6 +9,7 @@ public class ObjectSetting : MonoBehaviour
     [HideInInspector] public RealObject realObject;
     [HideInInspector] public MirrorPuzzle mirroPuzzleObject;
     [HideInInspector] public BoxPuzzle boxPuzzleObject;
+    [HideInInspector] public ComputerPuzzle computerPuzzleObject;
 
     private void Awake()
     {
@@ -34,8 +35,16 @@ public class ObjectSetting : MonoBehaviour
         {
             Box();
         }
+        else if (obj is ComputerPuzzle)
+        {
+            Computer();
+        }
     }
 
+    private void Computer()
+    {
+        computerPuzzleObject = obj as ComputerPuzzle;
+    }
     private void Box()
     {
         boxPuzzleObject = obj as BoxPuzzle;
