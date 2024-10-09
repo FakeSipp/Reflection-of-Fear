@@ -21,10 +21,6 @@ public class MirrorPuzzleTextHandle : MonoBehaviour
         {
             textMeshPro.enabled = true;
         }
-        else
-        {
-            textMeshPro.enabled = false; 
-        }
 
         if (light.light.isPowerOn)
         {

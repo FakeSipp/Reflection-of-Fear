@@ -1,11 +1,13 @@
 using System;
 using UnityEditor.Animations;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("Manager")]
     private InputManager input;
+    private MouseManager mouse;
 
     private CharacterController player;
     public Transform reflectionChar;
@@ -37,6 +39,7 @@ public class PlayerController : MonoBehaviour
     {
         #region Get Managers
         input = GameObject.Find("InputManager").GetComponent<InputManager>();
+        mouse = FindAnyObjectByType<MouseManager>();
         #endregion
 
         #region Get Components
@@ -47,6 +50,8 @@ public class PlayerController : MonoBehaviour
         #region Camera
         cam = Camera.main;
         #endregion
+
+        mouse.LockMouse();
 
         #region
         defaultSoundSpeed = walkSound.pitch;
@@ -83,9 +88,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleRotation()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-
+        if (!mouse.isMouseLocked) return;
         float mouseXRotation = input.LookInput.x * sensitivity;
         transform.Rotate(0, mouseXRotation, 0);
         reflectionChar.Rotate(0, -mouseXRotation, 0);
@@ -107,6 +110,7 @@ public class PlayerController : MonoBehaviour
     }
     private void HandleMovement()
     {
+        if (!mouse.isMouseLocked) return;
         currentSpeed = input.RunInput ? runSpeed : walkSpeed;
         Vector3 MovementDirection = WorldDirection * currentSpeed;
 

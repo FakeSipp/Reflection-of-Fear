@@ -8,6 +8,7 @@ public class ObjectSetting : MonoBehaviour
     [HideInInspector] public DoorObject doorObject;
     [HideInInspector] public RealObject realObject;
     [HideInInspector] public MirrorPuzzle mirroPuzzleObject;
+    [HideInInspector] public BoxPuzzle boxPuzzleObject;
 
     private void Awake()
     {
@@ -29,6 +30,15 @@ public class ObjectSetting : MonoBehaviour
         {
             Mirror();
         }
+        else if(obj is BoxPuzzle)
+        {
+            Box();
+        }
+    }
+
+    private void Box()
+    {
+        boxPuzzleObject = obj as BoxPuzzle;
     }
 
     private void Mirror()

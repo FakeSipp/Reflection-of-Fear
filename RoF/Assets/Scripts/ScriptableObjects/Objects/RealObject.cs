@@ -10,12 +10,11 @@ public class RealObject : ObjectClass
     override public void Interacted(Transform transform)
     {
         isTouch = true;
-        CoroutineRunner.Instance.StartCoroutine(ResetTouch());
+        CoroutineManager.Instance.WaitForSecondsCoroutine(waitTime, ResetTouch);
     }
 
-    private IEnumerator ResetTouch()
+    private void ResetTouch()
     {
-        yield return new WaitForSeconds(waitTime);
         isTouch = false;
     }
 }

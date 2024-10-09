@@ -1,20 +1,32 @@
 using UnityEngine;
+using System.Collections;
 
-public class CoroutineRunner : MonoBehaviour
+public class CoroutineManager : MonoBehaviour
 {
-    private static CoroutineRunner instance;
+    private static CoroutineManager instance;
 
-    public static CoroutineRunner Instance
+    public static CoroutineManager Instance
     {
         get
         {
             if (instance == null)
             {
-                GameObject obj = new GameObject("CoroutineRunner");
-                instance = obj.AddComponent<CoroutineRunner>();
+                GameObject obj = new GameObject("CoroutineManager");
+                instance = obj.AddComponent<CoroutineManager>();
                 DontDestroyOnLoad(obj);
             }
             return instance;
         }
+    }
+
+    public void WaitForSecondsCoroutine(float seconds, System.Action callback)
+    {
+        StartCoroutine(WaitCoroutine(seconds, callback));
+    }
+
+    private IEnumerator WaitCoroutine(float seconds, System.Action callback)
+    {
+        yield return new WaitForSeconds(seconds);
+        callback?.Invoke();
     }
 }

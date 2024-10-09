@@ -7,6 +7,7 @@ public class DoorCloseTrigger : MonoBehaviour
     public List<Door> doors;
     public bool isTrigger = false;
     public bool wasPlaySound = false;
+    public bool wasTrigger = false;
     private PlayerWordsManager wordManager;
 
     private void Awake()
@@ -34,11 +35,11 @@ public class DoorCloseTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            foreach (Door door in doors)
-            {
-                isTrigger = true;
-            }
+            isTrigger = true;
+            if (wasTrigger) return;
+
             wordManager.OpenLightText();
+            wasTrigger = true;
         }
     }
 }
