@@ -398,6 +398,8 @@
 "Assets/Main Menu/EXITTT.cs"
 "Assets/Main Menu/Load.cs"
 "Assets/Main Menu/mat/script/exit.cs"
+"Assets/Scripts/computer/Candle Puzzle.cs"
+"Assets/Scripts/computer/Change Image.cs"
 "Assets/Scripts/computer/close.cs"
 "Assets/Scripts/computer/Code number.cs"
 "Assets/Scripts/computer/open.cs"
