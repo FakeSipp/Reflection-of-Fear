@@ -2,14 +2,24 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class Codenumber : MonoBehaviour
 {
     [SerializeField] private TMP_Text Ans;
     [SerializeField] private GameObject uiToHide; // GameObject ของ UI ที่จะซ่อน
 
-    private string Answer = "123456";
+    private MouseManager mouse;
+
+    public Door door;
+
+    private string Answer = "5197";
     private float resetDelay = 0.5f;
+
+    private void Awake()
+    {
+        mouse = FindAnyObjectByType<MouseManager>();
+    }
 
     public void Number(int number)
     {
@@ -34,6 +44,13 @@ public class Codenumber : MonoBehaviour
     private IEnumerator HideUIAfterDelay()
     {
         yield return new WaitForSeconds(resetDelay); // รอเวลาก่อนซ่อน UI
+        mouse.LockMouse();
+        if (door != null)
+        {
+            door.locked = false;
+            PlayerWordsManager word = FindAnyObjectByType<PlayerWordsManager>();
+            word.ExitDoorOpenText();
+        }
         uiToHide.SetActive(false); // ปิด UI
     }
 

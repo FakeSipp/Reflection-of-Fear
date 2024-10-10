@@ -23,8 +23,6 @@ public class EventSoundManager : MonoBehaviour
 
     public void StopSound()
     {
-        audio.volume -= Time.deltaTime * volumeReducer;
-        if (audio.volume < 0)
-            audio.volume = 0;
+        audio.volume = 0;
     }
 }

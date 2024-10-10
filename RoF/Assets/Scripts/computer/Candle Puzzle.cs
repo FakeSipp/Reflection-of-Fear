@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class PuzzleManager : MonoBehaviour
 {
+    public MouseManager mouseManager;
+
     public Button button1;
     public Button button2;
     public Button button3;
@@ -11,10 +13,18 @@ public class PuzzleManager : MonoBehaviour
     public Button resetButton; // ปุ่มรีเซ็ต
 
     private bool[] buttonPressed = new bool[3]; // ตัวแปรบอกว่าปุ่มแต่ละปุ่มถูกกดหรือยัง
-    private int[] correctButtons = { 1, 3 }; // ปุ่มที่ต้องกดถูก (เช่น ปุ่ม 1 และ 3)
+    public int[] correctButtons = { 1, 2 }; // ปุ่มที่ต้องกดถูก (เช่น ปุ่ม 1 และ 3)
     private int correctCount = 0;
-    private bool puzzleSolved = false;
+    public bool puzzleSolved = false;
     private bool incorrectButtonPressed = false; // ตรวจสอบว่ากดปุ่มผิดหรือไม่
+
+    private BoxPuzzleHandle box;
+
+    private void Awake()
+    {
+        mouseManager = FindAnyObjectByType<MouseManager>();
+        box = FindAnyObjectByType<BoxPuzzleHandle>();
+    }
 
     void Start()
     {
@@ -30,6 +40,14 @@ public class PuzzleManager : MonoBehaviour
         resetButton.onClick.AddListener(ResetPuzzle);
     }
 
+    private void Update()
+    {
+        if(gameObject.activeSelf)
+        {
+            mouseManager.UnlockMouse();
+        }
+    }
+
     // ฟังก์ชันที่ทำงานเมื่อกดปุ่มต่างๆ
     void PressButton(int buttonID)
     {
@@ -39,7 +57,7 @@ public class PuzzleManager : MonoBehaviour
             Debug.Log("Button " + buttonID + " pressed");
 
             // ตรวจสอบว่าปุ่มที่กดเป็นปุ่มผิดหรือไม่
-            if (buttonID != 1 && buttonID != 3)
+            if (buttonID != 1 && buttonID != 2)
             {
                 incorrectButtonPressed = true;
                 Debug.Log("Incorrect Button Pressed! Resetting...");
@@ -75,6 +93,7 @@ public class PuzzleManager : MonoBehaviour
             // ถ้ากดถูกทุกปุ่ม ให้ปิด GameObject ที่เลือก
             Debug.Log("Puzzle Solved!");
             puzzleSolved = true;
+            box.open = puzzleSolved;
             HideObjects();
         }
         else
@@ -85,8 +104,9 @@ public class PuzzleManager : MonoBehaviour
         }
     }
 
-    void HideObjects()
+    public void HideObjects()
     {
+        mouseManager.LockMouse();
         // ปิด GameObject ทุกอันใน array objectsToHide
         foreach (GameObject obj in objectsToHide)
         {

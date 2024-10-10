@@ -1,13 +1,5 @@
 sceneSetups:
-<<<<<<< Updated upstream
 - path: Assets/Scenes/02_GameScene.unity
-=======
-<<<<<<< HEAD
-- path: Assets/Scenes/Candle Puzzle Test.unity
-=======
-- path: Assets/Scenes/02_GameScene.unity
->>>>>>> 5ba9edfe0343a919a16df21e03fa12da4750336b
->>>>>>> Stashed changes
   isLoaded: 1
   isActive: 1
   isSubScene: 0
