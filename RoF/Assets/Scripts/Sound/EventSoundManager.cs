@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EventSoundManager : MonoBehaviour
@@ -23,6 +21,8 @@ public class EventSoundManager : MonoBehaviour
 
     public void StopSound()
     {
-        audio.volume = 0;
+        audio.volume -= Time.deltaTime * volumeReducer;
+        if (audio.volume < 0)
+            audio.volume = 0;
     }
 }

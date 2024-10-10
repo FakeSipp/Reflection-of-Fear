@@ -55,7 +55,7 @@ public class Sanity : MonoBehaviour
     private void OnVideoEnd(VideoPlayer videoPlayer)
     {
         // LOAD SCENE 0 WHEN THE VIDEO ENDS
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(0);
     }
 
     public void SanityDecrease(float damage)

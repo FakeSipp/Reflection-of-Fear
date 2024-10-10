@@ -82,12 +82,12 @@ public class EventObjectManager : MonoBehaviour
         return eventObjects[index].realObj.realObject.isTouch;
     }
 
-    public void PlaySound(AudioSource audio)
+    public void PlaySound(AudioSource v)
     {
-        audio.Play();
+        v.Play();
     }
-    public void StopSound(AudioSource audio)
+    public void StopSound(AudioSource v)
     {
-        audio.Stop();
+        v.Stop();
     }
 }
